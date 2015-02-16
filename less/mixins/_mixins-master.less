@@ -1,7 +1,7 @@
 // Rem output with px fallback
 .font-size(@font-size) {
-	font-size: (@font-size * 10) + px;
-	font-size: @font-size + rem;
+	font-size: (@font-size * 10) * 1px;
+	font-size: @font-size * 1rem;
 }
 
 // Center block
