@@ -41,6 +41,18 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Captions
 	## Galleries
 --------------------------------------------------------------*/
+@font-face {
+  font-family: "Lato BoldItalic";
+  src: url('font/Lato-BoldItalic.ttf');
+}
+@font-face {
+  font-family: "Lato Bold";
+  src: url('font/Lato-Bold.ttf');
+}
+@font-face {
+  font-family: "Lato Italic";
+  src: url('font/Lato-Italic.ttf');
+}
 .center-block {
   display: block;
   margin: 0 auto;
@@ -434,25 +446,37 @@ textarea {
 /*--------------------------------------------------------------
 5.1 Links
 --------------------------------------------------------------*/
-a {
-  color: royalblue;
-}
-a:visited {
-  color: purple;
-}
-a:hover,
-a:focus,
-a:active {
-  color: midnightblue;
-}
 /*--------------------------------------------------------------
 5.2 Menus
 --------------------------------------------------------------*/
+.site-header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 150px;
+}
+.site-branding {
+  margin: auto 0;
+  float: left;
+  font-size: 42px;
+  font-family: Lato BoldItalic;
+}
+.site-branding a {
+  color: #000;
+  text-decoration: none;
+}
 .main-navigation {
   clear: both;
-  display: block;
-  float: left;
-  width: 100%;
+  margin: auto 0;
+  font-family: Lato Bold;
+  font-size: 16px;
 }
 .main-navigation ul {
   list-style: none;
@@ -463,7 +487,7 @@ a:active {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
   float: left;
   position: absolute;
-  top: 1.5em;
+  top: 2.5em;
   left: -999em;
   z-index: 99999;
 }
@@ -475,18 +499,59 @@ a:active {
   left: 100%;
 }
 .main-navigation ul ul a {
+  font-size: 16px;
   width: 200px;
 }
 .main-navigation ul li:hover > ul {
-  left: auto;
+  left: 0;
 }
 .main-navigation li {
+  padding: 10px;
   float: left;
   position: relative;
 }
+.main-navigation li a {
+  color: #000;
+}
+.main-navigation li:hover > a {
+  text-decoration: none;
+  color: #5c6bc0;
+}
+.main-navigation li:before {
+  content: "";
+  width: 100%;
+  height: 4px;
+  background-color: #5c6bc0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: none;
+  -webkit-transform: translate(0, 500px);
+  -moz-transform: translate(0, 500px);
+  -ms-transform: translate(0, 500px);
+  transform: translate(0, 500px);
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  transition: all 0.1s;
+}
+.main-navigation li:hover:before {
+  display: block;
+  opacity: 1;
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  transition: all 0.1s;
+  -webkit-transform: translate(0, 0px);
+  -moz-transform: translate(0, 0px);
+  -ms-transform: translate(0, 0px);
+  transform: translate(0, 0px);
+}
 .main-navigation a {
+  font-size: 16px;
   display: block;
   text-decoration: none;
+}
+.search-header {
+  margin: auto 0;
 }
 /* Small menu */
 .menu-toggle {
@@ -519,6 +584,34 @@ a:active {
   float: right;
   text-align: right;
   width: 50%;
+}
+.search-header form {
+  position: relative;
+}
+.search-header .form-search-head {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.search-header .form-search-head input {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  width: 0;
+  opacity: 0;
+}
+.search-header .form-search-head input:focus {
+  width: 100px;
+  opacity: 1;
+}
+.search-header .form-search-head:hover input {
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+  width: 100px;
+  opacity: 1;
 }
 /*--------------------------------------------------------------
 6.0 Accessibility
@@ -722,6 +815,37 @@ a:active {
 .page-links {
   clear: both;
   margin: 0 0 1.5em;
+}
+.main-footer {
+  margin: 0 auto;
+}
+.main-footer p.site-title {
+  font-family: Lato BoldItalic;
+  font-size: 42px;
+  color: #4a569a;
+  text-align: center;
+}
+.menu-footer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.site-main > div {
+  margin: 0 auto;
+}
+body {
+  background-color: #f7f9fc !important;
+}
+article {
+  background: #ffffff;
+  margin-bottom: 50px;
 }
 /*--------------------------------------------------------------
 10.2 Asides
@@ -7379,4 +7503,10 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+.site-header:before {
+  display: none;
+}
+.site-header:after {
+  display: none;
 }

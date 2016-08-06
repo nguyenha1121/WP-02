@@ -14,11 +14,13 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'wp_02' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'wp_02' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'wp_02' ), 'wp_02', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
-		</div><!-- .site-info -->
+		 <div class="container"> 		
+	 		<div class="col-md-10 col-sm-10 col-xs-10 main-footer">
+	 			<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+	 			<?php  wp_02_menus(); ?>
+	 		</div>
+	 	</div>
+
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

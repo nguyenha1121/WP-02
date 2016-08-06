@@ -70,7 +70,7 @@ gulp.task('build-css', function () {
 gulp.task('watch', function () {
     gulp.watch('assets/js/libs/**/*.js', ['squish-jquery']);
     gulp.watch('assets/js/*.js', ['build-js']);
-    gulp.watch('less/style.less', ['build-css']);
+    gulp.watch('less/**/*.less', ['build-css']);
 });
 
 // Folder "/" serving at http://localhost:8888

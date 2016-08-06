@@ -101,6 +101,22 @@ add_action( 'widgets_init', 'wp_02_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
+
+	function wp_02_menus(){ ?>
+		
+		
+		<nav id="site-navigation " class="main-navigation" role="navigation">
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'wp_02' ); ?></button>
+			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+		</nav><!-- #site-navigation -->
+		<div class="search-header">
+			<?php get_search_form(true); ?>
+		</div>
+		<?php
+	}
+
+
+
 function wp_02_scripts() {
 	wp_enqueue_style( 'wp_02-style', get_stylesheet_uri() );
 
@@ -138,3 +154,4 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
