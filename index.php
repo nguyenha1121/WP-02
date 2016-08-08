@@ -47,9 +47,10 @@ get_header(); ?>
 					get_template_part( 'template-parts/content', 'none' );
 
 				endif; ?>
+				<?php wp_02_pagination(); ?>
 			</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
-
+<span style="color: #c0c0c0;"><?php page_nav(); ?></span>
 <?php
 get_footer();

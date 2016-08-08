@@ -460,7 +460,7 @@ textarea {
   -moz-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  height: 150px;
+  height: 200px;
 }
 .site-branding {
   margin: auto 0;
@@ -793,6 +793,9 @@ textarea {
 /*--------------------------------------------------------------
 10.1 Posts and pages
 --------------------------------------------------------------*/
+body {
+  word-wrap: break-word;
+}
 .sticky {
   display: block;
 }
@@ -845,7 +848,78 @@ body {
 }
 article {
   background: #ffffff;
-  margin-bottom: 50px;
+  margin-bottom: 50px!important;
+  box-shadow: 0px 0px 36px -10px #5C6BB7;
+}
+.post-,
+.post-status,
+.post-image,
+.post-video,
+.post-gallery,
+.post-aside,
+.post-chat,
+.post-link,
+.post-quote {
+  padding: 100px 10%;
+}
+.post-quote {
+  background: url('bgquote.png') no-repeat;
+  background-size: 100% 100%;
+}
+.entry-meta {
+  position: relative;
+}
+.entry-meta a {
+  font-family: Lato Bold;
+  text-decoration: none;
+  color: #bdbdbd;
+}
+.post-format {
+  position: absolute;
+  top: 0;
+  right: -14%;
+  font-family: Lato Bold;
+  font-size: 14px;
+  background: #5c6bc0;
+  color: #ffffff;
+  padding: 7px 10px;
+}
+.tags-links {
+  text-align: right;
+}
+figure.post-thumbnail {
+  background: red;
+}
+figure.post-thumbnail img {
+  width: 100%;
+  height: auto;
+}
+.entry-content iframe {
+  width: 100%;
+}
+.navigation li a,
+.navigation li a:hover,
+.navigation li.active a,
+.navigation li.disabled {
+  color: #fff;
+  text-decoration: none;
+}
+.navigation li {
+  display: inline;
+}
+.navigation li a,
+.navigation li a:hover,
+.navigation li.active a,
+.navigation li.disabled {
+  background-color: #6FB7E9;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 12px;
+  padding: 0.75rem;
+}
+.navigation li a:hover,
+.navigation li.active a {
+  background-color: #3C8DC5;
 }
 /*--------------------------------------------------------------
 10.2 Asides

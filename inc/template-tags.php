@@ -18,14 +18,13 @@ function wp_02_posted_on() {
 	}
 
 	$time_string = sprintf( $time_string,
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		esc_attr( get_the_modified_date( 'c' ) ),
-		esc_html( get_the_modified_date() )
+		esc_attr( get_the_date( 'M j ' ) ),
+		esc_html( get_the_date('M j ') ),
+		esc_attr( get_the_modified_date( 'M j ' ) ),
+		esc_html( get_the_modified_date('M j ') )
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'wp_02' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
@@ -55,7 +54,7 @@ function wp_02_entry_footer() {
 		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'wp_02' ) );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'wp_02' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			printf( '<p class="tags-links">' . esc_html__( '%1$s', 'wp_02' ) . '</p>', $tags_list ); // WPCS: XSS OK.
 		}
 	}
 
@@ -120,3 +119,46 @@ function wp_02_category_transient_flusher() {
 }
 add_action( 'edit_category', 'wp_02_category_transient_flusher' );
 add_action( 'save_post',     'wp_02_category_transient_flusher' );
+
+
+
+
+function wp_02_format_post(){
+ 	if (get_post_format() == 'image') echo 'I Do Observe';
+ 	elseif (has_post_format('quote')) echo 'I Do Quote';
+ 	elseif (has_post_format('video')) echo 'I Do Watch';
+ 	elseif (has_post_format('gallery')) echo 'I Do Photo';
+ 	elseif (has_post_format('Audio')) echo 'I Do Listen';
+ 	elseif (has_post_format('link')) echo 'I Do Share';
+ 	elseif (has_post_format('status')) echo 'I Think';
+ 	else echo 'I Do Travel';
+ 	// elseif (has_post_format('gallery')) echo 'Do Photo';
+
+ }
+
+
+function wp_02_readmore(){
+	return '<a class="excerpt-but" href="'.get_permalink(get_the_ID()).'">'.__('Read More','wp_02').'</a>';
+}
+ add_filter('excerpt_more','wp_02_readmore');
+
+if(!function_exists('wp_02_entry_content')){
+	function wp_02_entry_content(){
+		the_content( sprintf(
+				/* translators: %s: Name of current post. */
+				wp_kses( __( 'Read More ', 'wp_02' ), array( 'div' => array( 'class' => array() ) ) ),
+				the_title( '<div class="screen-reader-text">"', '"</div>')
+			) );
+
+		wp_link_pages( array(
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'wp_02' ),
+			'after'  => '</div>',
+		) );		
+	}
+}
+
+
+ /**
+Ham them nut read more
+**/
+

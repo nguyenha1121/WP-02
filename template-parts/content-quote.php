@@ -9,12 +9,8 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('entry-contentsssssss e-'.get_post_format()); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('post-'.get_post_format()); ?>>
 	<header class="entry-header">
-		<?php wp_02_thumbnail('large'); ?>
-	</header><!-- .entry-header -->
-
-	<div <?php post_class('entry-content post-'.get_post_format()); ?>>
 		<div class="entry-meta">
 			<?php wp_02_posted_on(); ?>
 			<div class="post-format">
@@ -31,9 +27,12 @@
 		if ( 'post' === get_post_type() ) : ?>
 		<?php
 		endif; ?>
+	</header><!-- .entry-header -->
+
+	<div class="entry-content">
 		<?php
 			wp_02_entry_content();
 		?>
 	</div><!-- .entry-content -->
-
+<?php //wp_02_pagination(); ?>
 </article><!-- #post-## -->
