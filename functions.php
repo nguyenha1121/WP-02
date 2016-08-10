@@ -112,53 +112,34 @@ function wp_02_widgets_init() {
 }
 add_action( 'widgets_init', 'wp_02_widgets_init' );
 
+define( 'THEME_URL',get_stylesheet_directory() );
+define("CORE", THEME_URL."/core");
+/**
+@Nhung file /core/init.php
+**/
+require_once( CORE . "/init.php" );
+
+
 /**
  * Enqueue scripts and styles.
  */
 
-	function wp_02_menus(){ ?>
-		
-		
-		<nav id="site-navigation " class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'wp_02' ); ?></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-		</nav><!-- #site-navigation -->
-		<div class="search-header">
-			<?php get_search_form(true); ?>
-		</div>
-		<?php
-	}
 
-if(!function_exists('wp_02_pagination')){
-	function wp_02_pagination(){
-		?>
-		<pre>
-			<?php var_dump($GLOBALS ['wp_query']->max_num_pages) ; ?>
-		</pre>
-		<?php
-		if ( $GLOBALS['wp_query']->max_num_pages < 2 ){
-			return '';
-		}
-		else{
-
-		}
-	}
-}
-
-if(!function_exists('wp_02_thumbnail')){
-	function wp_02_thumbnail($size){
-		if(! is_single() &&  has_post_thumbnail()  && ! post_password_required() || has_post_format( 'image' )) : ?>
-			<figure class = "post-thumbnail">
-				<?php the_post_thumbnail($size); ?>		
-			</figure>
-			<?php endif ;
-	}
-}
 
 function wp_02_scripts() {
 	wp_enqueue_style( 'wp_02-style', get_stylesheet_uri() );
 
+	wp_enqueue_style( 'owl', get_template_directory_uri().'/OwlCarousel-master/owl-carousel/owl.theme.css' );
+
+	wp_enqueue_style( 'owl-theme', get_template_directory_uri().'/OwlCarousel-master/owl-carousel/owl.carousel.css' );
+
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/font-awesome-4.6.3/css/font-awesome.min.css' );
+
+	wp_enqueue_script( 'owl-js', get_template_directory_uri() . '/OwlCarousel-master/owl-carousel/owl.carousel.js', array('jquery'), '20151215', true );
+
 	wp_enqueue_script( 'wp_02-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'wp_02-customizer', get_template_directory_uri() . '/js/customizer.js', array());
 
 	wp_enqueue_script( 'wp_02-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -228,8 +209,8 @@ function page_nav() {
 	echo '<div class="navigation"><ul>' . "\n";
 
 	/**	Previous Post Link */
-	if ( get_previous_posts_link() )
-		printf( '<li>%s</li>' . "\n", get_previous_posts_link() );
+	// if ( get_previous_posts_link() )
+	// 	printf( '<li>%s</li>' . "\n", get_previous_posts_link() );
 
 	/**	Link to first page, plus ellipses if necessary */
 	if ( ! in_array( 1, $links ) ) {
@@ -258,9 +239,144 @@ function page_nav() {
 	}
 
 	/**	Next Post Link */
-	if ( get_next_posts_link() )
-		printf( '<li>%s</li>' . "\n", get_next_posts_link() );
+	// if ( get_next_posts_link() )
+	// 	printf( '<li>%s</li>' . "\n", get_next_posts_link() );
 
 	echo '</ul></div>' . "\n";
 
+}
+
+	function wp_02_menus(){ ?>
+		<div class="menu-and-search">
+			<nav id="site-navigation " class="main-navigation" role="navigation">
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'wp_02' ); ?></button>
+				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+			</nav><!-- #site-navigation -->
+			<div class="search-header">
+				<?php get_search_form(true); ?>
+			</div>
+		</div>
+		<?php
+	}
+
+if(!function_exists('wp_02_thumbnail')){
+	function wp_02_thumbnail($size){
+		if(! is_single() &&  has_post_thumbnail()  && ! post_password_required() || has_post_format( 'image' )) : ?>
+			<figure class = "post-thumbnail">
+				<?php the_post_thumbnail($size); ?>		
+			</figure>
+			<?php endif ;
+	}
+}
+
+// set branding
+if(!function_exists('wp_02_branding')){
+	function wp_02_branding(){
+		global $wp_02_options;
+		if ($wp_02_options['logo-on']==0) :
+		?>
+		<div class="site-branding ">
+			<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+		</div>
+		<?php else : ?>
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="navbar-brand">
+            <img class=" img-logo" src="<?php echo $wp_02_options['logo-image']['url']; ?>" alt="logo">
+        </a>
+        <?php endif;
+
+	}
+}
+if(!function_exists('wp_02_copyright')){
+	function wp_02_copyright(){
+		global $wp_02_options;
+		if ($wp_02_options['text-1-on']!=0) :
+	?>
+			<hr>
+	 		<p class="description-footer"><?php echo $wp_02_options['txt-1']; ?></p>
+	 		<hr>
+	 		<p class="copyright"><span>&copy;&nbsp;</span><span><?php echo $wp_02_options['txt-2']; ?></span></p>
+	<?php endif; ?>
+	<?php
+// list social icons
+}
+}
+function my_customizer_social_media_array() {
+
+	/* store social site names in array */
+	$social_sites = array('twitter', 'facebook', 'google-plus', 'flickr', 'pinterest', 'youtube', 'tumblr', 'dribbble', 'rss', 'linkedin', 'instagram', 'email');
+
+	return $social_sites;
+}
+
+/* add settings to create various social media text areas. */
+add_action('customize_register', 'my_add_social_sites_customizer');
+ 
+function my_add_social_sites_customizer($wp_customize) {
+ 
+	$wp_customize->add_section( 'my_social_settings', array(
+			'title'    => __('Social Media Icons', 'text-domain'),
+			'priority' => 35,
+	) );
+ 
+	$social_sites = my_customizer_social_media_array();
+	$priority = 5;
+ 
+	foreach($social_sites as $social_site) {
+ 
+		$wp_customize->add_setting( "$social_site", array(
+				'type'              => 'theme_mod',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'esc_url_raw'
+		) );
+ 
+		$wp_customize->add_control( $social_site, array(
+				'label'    => __( "$social_site url:", 'text-domain' ),
+				'section'  => 'my_social_settings',
+				'type'     => 'text',
+				'priority' => $priority,
+		) );
+ 
+		$priority = $priority + 5;
+	}
+}
+/* takes user input from the customizer and outputs linked social media icons */
+function my_social_media_icons() {
+ 
+    $social_sites = my_customizer_social_media_array();
+ 
+    /* any inputs that aren't empty are stored in $active_sites array */
+    foreach($social_sites as $social_site) {
+        if( strlen( get_theme_mod( $social_site ) ) > 0 ) {
+            $active_sites[] = $social_site;
+        }
+    }
+ 
+    /* for each active social site, add it as a list item */
+        if ( ! empty( $active_sites ) ) {
+ 
+            echo "<ul class='social-media-icons'>";
+ 
+            foreach ( $active_sites as $active_site ) {
+ 
+	            /* setup the class */
+		        $class = 'fa fa-' . $active_site;
+ 
+                if ( $active_site == 'email' ) {
+                    ?>
+                    <li>
+                        <a class="email" target="_blank" href="mailto:<?php echo antispambot( is_email( get_theme_mod( $active_site ) ) ); ?>">
+                            <i class="fa fa-envelope" title="<?php _e('email icon', 'text-domain'); ?>"></i>
+                        </a>
+                    </li>
+                <?php } else { ?>
+                    <li>
+                        <a class="<?php echo $active_site; ?>" target="_blank" href="<?php echo esc_url( get_theme_mod( $active_site) ); ?>">
+                            <i class="<?php echo esc_attr( $class ); ?>" title="<?php printf( __('%s icon', 'text-domain'), $active_site ); ?>"></i>
+                        </a>
+                    </li>
+                <?php
+                }
+            }
+            echo "</ul>";
+        }
 }

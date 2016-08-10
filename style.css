@@ -53,6 +53,10 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   font-family: "Lato Italic";
   src: url('font/Lato-Italic.ttf');
 }
+@font-face {
+  font-family: "Lato Regular";
+  src: url('font/Lato-Regular.ttf');
+}
 .center-block {
   display: block;
   margin: 0 auto;
@@ -472,6 +476,21 @@ textarea {
   color: #000;
   text-decoration: none;
 }
+.menu-and-search {
+  clear: both;
+  margin: auto 0;
+  font-family: Lato Bold;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
 .main-navigation {
   clear: both;
   margin: auto 0;
@@ -613,6 +632,11 @@ textarea {
   width: 100px;
   opacity: 1;
 }
+button#searchsubmit {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
 /*--------------------------------------------------------------
 6.0 Accessibility
 --------------------------------------------------------------*/
@@ -681,7 +705,7 @@ textarea {
 .site-footer:before,
 .site-footer:after {
   content: "";
-  display: table;
+  display: block;
 }
 .clear:before:before,
 .clear:after:before,
@@ -708,7 +732,7 @@ textarea {
 .site-footer:before:after,
 .site-footer:after:after {
   content: " ";
-  display: table;
+  display: block;
 }
 .clear:before:after,
 .clear:after:after,
@@ -749,7 +773,7 @@ textarea {
 .site-footer:before:after,
 .site-footer:after:after {
   content: " ";
-  display: table;
+  display: block;
 }
 .clear:before:after,
 .clear:after:after,
@@ -795,6 +819,7 @@ textarea {
 --------------------------------------------------------------*/
 body {
   word-wrap: break-word;
+  font-family: Lato Regular;
 }
 .sticky {
   display: block;
@@ -819,14 +844,40 @@ body {
   clear: both;
   margin: 0 0 1.5em;
 }
+footer {
+  background-color: #5c6bc0;
+}
 .main-footer {
+  color: #a9afdb;
   margin: 0 auto;
+}
+.main-footer .site-title {
+  padding-top: 50px;
+}
+.main-footer .site-title a {
+  color: #4a569a;
+}
+.main-footer .menu-and-search {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.main-footer .menu-and-search li a {
+  color: #ffffff!important;
+}
+.main-footer .menu-and-search li:hover a {
+  color: #a9afdb!important;
 }
 .main-footer p.site-title {
   font-family: Lato BoldItalic;
   font-size: 42px;
   color: #4a569a;
   text-align: center;
+}
+.sub-menu li {
+  background: #f5f5f5;
 }
 .menu-footer {
   display: -webkit-box;
@@ -860,11 +911,11 @@ article {
 .post-chat,
 .post-link,
 .post-quote {
-  padding: 100px 10%;
+  padding: 20px 10% 100px;
 }
 .post-quote {
   background: url('bgquote.png') no-repeat;
-  background-size: 100% 100%;
+  background-color: #ffffff;
 }
 .entry-meta {
   position: relative;
@@ -897,29 +948,35 @@ figure.post-thumbnail img {
 .entry-content iframe {
   width: 100%;
 }
-.navigation li a,
-.navigation li a:hover,
-.navigation li.active a,
-.navigation li.disabled {
-  color: #fff;
+.navigation ul {
+  list-style-type: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.navigation ul li {
+  margin: 10px;
+}
+.navigation ul li a {
+  color: #000;
+  padding: 15px 20px;
+  text-align: center;
+  line-height: 40px;
+  background: #ffffff;
   text-decoration: none;
+  box-shadow: 0px 0px 15px -2px #a8adb1;
+  font-size: 16px;
 }
-.navigation li {
-  display: inline;
-}
-.navigation li a,
-.navigation li a:hover,
-.navigation li.active a,
-.navigation li.disabled {
-  background-color: #6FB7E9;
-  border-radius: 3px;
-  cursor: pointer;
-  padding: 12px;
-  padding: 0.75rem;
-}
-.navigation li a:hover,
-.navigation li.active a {
-  background-color: #3C8DC5;
+.navigation ul li.active a {
+  background: #5c6bc0;
+  color: #ffffff;
 }
 /*--------------------------------------------------------------
 10.2 Asides
@@ -936,6 +993,61 @@ figure.post-thumbnail img {
 }
 .bypostauthor {
   display: block;
+}
+.entry-header iframe {
+  width: 100%;
+}
+a.more-link {
+  float: left;
+  font-family: Lato Bold;
+  text-decoration: none;
+  color: #5c6bc0;
+  font-size: 20px;
+}
+.tags-links {
+  float: right;
+  color: #b2b2b2;
+}
+.tags-links a {
+  color: #b2b2b2;
+}
+.entry-title {
+  font-family: Lato Bold;
+}
+.entry-content {
+  margin: 0;
+}
+.img-logo {
+  height: 150px;
+  width: auto;
+}
+.gallery {
+  display: none;
+}
+ul.social-media-icons {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+ul.social-media-icons li a {
+  color: #ffffff;
+}
+ul.social-media-icons li a i {
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  font-size: 25px;
 }
 /*--------------------------------------------------------------
 11.0 Infinite scroll
@@ -4683,7 +4795,7 @@ tbody.collapse.in {
   border-top-left-radius: 0;
 }
 .btn-group-justified {
-  display: table;
+  display: block;
   width: 100%;
   table-layout: fixed;
   border-collapse: separate;
@@ -4710,7 +4822,7 @@ tbody.collapse.in {
 }
 .input-group {
   position: relative;
-  display: table;
+  display: block;
   border-collapse: separate;
 }
 .input-group[class*="col-"] {
@@ -7281,7 +7393,7 @@ button.close {
 .panel-body,
 .modal-footer {
   content: "";
-  display: table;
+  display: block;
 }
 .clearfix:before,
 .clearfix:after,
@@ -7314,7 +7426,7 @@ button.close {
 .modal-footer:before,
 .modal-footer:after {
   content: " ";
-  display: table;
+  display: block;
 }
 .clearfix:after,
 .dl-horizontal dd:after,
@@ -7396,7 +7508,7 @@ button.close {
     display: block !important;
   }
   table.visible-xs {
-    display: table;
+    display: block;
   }
   tr.visible-xs {
     display: table-row !important;
@@ -7426,7 +7538,7 @@ button.close {
     display: block !important;
   }
   table.visible-sm {
-    display: table;
+    display: block;
   }
   tr.visible-sm {
     display: table-row !important;
@@ -7456,7 +7568,7 @@ button.close {
     display: block !important;
   }
   table.visible-md {
-    display: table;
+    display: block;
   }
   tr.visible-md {
     display: table-row !important;
@@ -7486,7 +7598,7 @@ button.close {
     display: block !important;
   }
   table.visible-lg {
-    display: table;
+    display: block;
   }
   tr.visible-lg {
     display: table-row !important;
@@ -7539,7 +7651,7 @@ button.close {
     display: block !important;
   }
   table.visible-print {
-    display: table;
+    display: block;
   }
   tr.visible-print {
     display: table-row !important;

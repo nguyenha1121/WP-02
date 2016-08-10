@@ -16,7 +16,8 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main container" role="main">
-			<div class="col-md-10 col-sm-10">
+			<div class="col-md-1 col-sm-1 col-xs-1"></div>
+			<div class="col-md-10 col-sm-10 col-xs-10">
 				<?php
 				if ( have_posts() ) :
 
@@ -40,15 +41,16 @@ get_header(); ?>
 
 					endwhile;
 
-					the_posts_navigation();
+					//the_posts_navigation();
 
 				else :
 
 					get_template_part( 'template-parts/content', 'none' );
 
 				endif; ?>
-				<?php wp_02_pagination(); ?>
+				<?php //wp_02_pagination(); ?>
 			</div>
+			<div class="col-md-1 col-sm-1 col-xs-1"></div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 <span style="color: #c0c0c0;"><?php page_nav(); ?></span>

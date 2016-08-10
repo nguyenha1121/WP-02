@@ -585,7 +585,7 @@ a:active {
 .site-footer:before,
 .site-footer:after {
   content: "";
-  display: table;
+  display:block;
 }
 .clear:after,
 .entry-content:after,

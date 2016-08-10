@@ -149,11 +149,17 @@ if(!function_exists('wp_02_entry_content')){
 				wp_kses( __( 'Read More ', 'wp_02' ), array( 'div' => array( 'class' => array() ) ) ),
 				the_title( '<div class="screen-reader-text">"', '"</div>')
 			) );
+		//tag link
+		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'wp_02' ) );
+		if ( $tags_list ) {
+			printf( '<span class="tags-links">' . esc_html__( '%1$s', 'wp_02' ) . '</span>', '#'.$tags_list ); // WPCS: XSS OK.
+		}
 
 		wp_link_pages( array(
 			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'wp_02' ),
 			'after'  => '</div>',
-		) );		
+		) );	
+
 	}
 }
 
