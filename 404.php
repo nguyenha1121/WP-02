@@ -9,9 +9,10 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-
+	<div id="primary" class="content-area container">
+		<div class="col-md-1 col-xs-1 col-sm-1"></div>
+		<main id="main" class="site-main col-md-10 col-sm-10 col-xs-10" role="main">
+		
 			<section class="error-404 not-found">
 				<header class="page-header">
 					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'wp_02' ); ?></h1>
@@ -58,6 +59,7 @@ get_header(); ?>
 			</section><!-- .error-404 -->
 
 		</main><!-- #main -->
+		<div class="col-md-1 col-xs-1 col-sm-1"></div>
 	</div><!-- #primary -->
 
 <?php

@@ -3,6 +3,12 @@
 		width: 100%;
 	}
 }
+.entry-header-video{
+	iframe{
+		width: 100%;
+		height: 400px;
+	}
+}
 a.more-link{
 	float: left;
 	font-family: Lato Bold;
@@ -50,4 +56,199 @@ ul.social-media-icons{
 			}
 		}
 	}
+}/////////////////
+
+.carousel .carousel-item {
+    display: none;
+    width: 80%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.carousel .carousel-item img {
+    width: 100%;
+}
+.carousel {
+	margin:0 auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 550px;
+    -webkit-perspective: 500px;
+    perspective: 500px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+}
+#main-contact{
+	padding:30px 10%;
+	background: #ffffff;
+}
+//// contac form
+form.wpcf7-form{
+	input{
+		margin-bottom: 20px;
+		height: 50px;
+		border: none;
+		background:#f7f9fc;
+		font-size: 16px;
+	}
+	textarea{
+		border: none;
+		background:#f7f9fc;
+		font-size: 16px;
+		margin-top: 10px;
+	}
+	.formname{
+		height: 50px;
+		float: left;
+		width: 48%;
+	}
+	.formemail{
+		width :48%;
+		height: 50px;
+		margin-left: 4%;
+		clear: both;
+	}
+	.formsubject{
+		height: 50px;
+		display: block;
+		width: 100%;
+	}
+	.ssdd{
+		background: #ffffff;
+		color: @color_hover;
+		text-transform: uppercase;
+		box-shadow: none;
+		font-family: Lato Bold;
+	}
+	.ssdd:hover{
+		font-family: Lato ItalicBold;
+	}
+}
+#main-search-result{
+	>header{
+		background: #ffffff;
+		box-shadow: 0px 0px 36px -10px #5C6BB7;
+		padding: 30px 10%;
+		p{
+			color: #bfbfbf;
+			font-size: 14px;
+		}
+	}
+	margin:0 auto;
+}
+.title-about{
+	padding: 20px 0 ;
+}
+#main-about{
+	margin:50px 0 100px 0;
+	background: #ffffff;
+	box-shadow: 0px 0px 36px -10px #5C6BB7;
+}
+#main-archive{
+	>header{
+		background: #ffffff;
+		box-shadow: 0px 0px 36px -10px #5C6BB7;
+		padding: 30px 10%;
+		p{
+			color: #bfbfbf;
+			font-size: 14px;
+		}
+	}
+	margin:0 auto;
+}
+#main-archives{
+	font-family: Lato Bold;
+	background: #ffffff;
+	box-shadow: 0px 0px 36px -10px #5C6BB7;
+	padding: 30px 10%;
+	margin-bottom: 100px;
+	>header{
+		
+		
+		
+		p{
+			color: #bfbfbf;
+			font-size: 14px;
+		}
+	}
+	
+	ul{
+		margin:0;
+	}
+	li{
+		list-style-type: none;
+		text-decoration: none;
+		a{
+			color: #000;
+		}
+		a:hover{
+			text-decoration: none;
+			font-style: italic;
+		}
+	}
+	h2{
+		color: #bfbfbf;
+	}
+	.monthly{
+		display: none;
+
+	}
+	p#monthly-title{
+		font-size: 20px;
+	}
+	p#monthly-title:hover .monthly{
+		display: block;
+	}
+}
+@media screen and (max-width: 600px) {
+	button#searchsubmit{
+		display: none;
+		position: absolute;
+		top:50px;
+		left: -350px;
+	}
+	input#s{
+		display: none;
+		opacity: 1;
+	}
+	ul.sub-menu{
+		display: none;
+	}
+	li:hover >ul.sub-menu{
+		display: block;
+	}
+}
+.respon-menu{
+	display: none;
+	padding:0 50px 40px;
+	li{
+		font-size: 16px;
+		list-style-type: none;
+		background: #ffffff;
+		padding:10px 50px 0 0 ;
+
+		a{
+			font-family: Lato Bold;
+			padding:5px;
+			background: #ffffff;
+			color: #000;
+
+		}
+	}
+	li:hover{
+		text-decoration: none;
+		color:#bfbfbf;
+	}
+	ul{
+		padding-top:10px;
+		background: #ffffff;
+	}
+	ul.primary{
+		padding-bottom: 20px;
+	}
+	
 }

@@ -31,9 +31,11 @@
 		if ( 'post' === get_post_type() ) : ?>
 		<?php
 		endif; ?>
+	
 		<?php
 			wp_02_entry_content();
 		?>
+
 	</div><!-- .entry-content -->
 
 </article><!-- #post-## -->

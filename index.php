@@ -16,8 +16,8 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main container" role="main">
-			<div class="col-md-1 col-sm-1 col-xs-1"></div>
-			<div class="col-md-10 col-sm-10 col-xs-10">
+			<div class="col-md-1 col-sm-1 none-xs"></div>
+			<div class="col-md-10 col-sm-10 col-xs-12">
 				<?php
 				if ( have_posts() ) :
 
@@ -50,9 +50,9 @@ get_header(); ?>
 				endif; ?>
 				<?php //wp_02_pagination(); ?>
 			</div>
-			<div class="col-md-1 col-sm-1 col-xs-1"></div>
+			<div class="col-md-1 col-sm-1 none-xs"></div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
-<span style="color: #c0c0c0;"><?php page_nav(); ?></span>
+<span ><?php page_nav(); ?></span>
 <?php
 get_footer();

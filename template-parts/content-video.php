@@ -10,7 +10,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('entry-contentsssssss e-'.get_post_format()); ?>>
-	<header class="entry-header">
+	<header class="entry-header-video">
 		<?php 
 			$links = get_post_meta($post->ID,'_link',true);
 			echo $links;

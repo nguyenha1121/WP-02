@@ -14,20 +14,28 @@
 		<?php 
 			$gallery = get_post_gallery($post,false);
 			$ids = explode( ",", $gallery['ids'] );
-			echo '<div id="owl-demo" class="owl-carousel owl-theme">';
-			foreach ($ids as $id) {
-				$link   = wp_get_attachment_url( $id );
-				echo'<div class="item"><img src="'.esc_url($link).'"></div>';
+				if (isset($gallery)&&!empty($ids)){
+					echo '<div class = "father">';
+					echo '<div class="carousel">';
+					foreach ($ids as $id) {
+						$link   = wp_get_attachment_url( $id );
+						echo'<a class="carousel-item"><img src="'.esc_url($link).'"></a>';
+					}
+					echo '</div>';
+					echo '</div>';
+				
 			}
-			echo '</div>';
 		?>
-	</header><!-- .entry-header -->
 
- 
-<!--   <div class="item"><img src="assets/fullimage1.jpg" alt="The Last of us"></div>
-  <div class="item"><img src="assets/fullimage2.jpg" alt="GTA V"></div>
-  <div class="item"><img src="assets/fullimage3.jpg" alt="Mirror Edge"></div> -->
- 
+
+		    
+	<!-- 	    <a class="carousel-item" href="#two!"><img src="http://lorempixel.com/250/250/nature/2"></a>
+		    <a class="carousel-item" href="#three!"><img src="http://lorempixel.com/250/250/nature/3"></a>
+		    <a class="carousel-item" href="#four!"><img src="http://lorempixel.com/250/250/nature/4"></a>
+		    <a class="carousel-item" href="#five!"><img src="http://lorempixel.com/250/250/nature/5"></a> -->
+		  
+
+	</header><!-- .entry-header -->
 
 	<div <?php post_class('entry-content post-'.get_post_format()); ?>>
 		<div class="entry-meta">
